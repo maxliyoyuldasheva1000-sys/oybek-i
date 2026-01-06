@@ -1,0 +1,46 @@
+body{
+  background: linear-gradient(135deg, #1d2671, #c33764);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 30px;
+  color: white;
+}
+
+h1{
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+h2{
+  margin-top: 30px;
+}
+
+button{
+  padding: 14px 25px;
+  margin: 10px;
+  font-size: 17px;
+  border: none;
+  border-radius: 25px;
+  background: #ffffff;
+  color: #1d2671;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover{
+  background: #f1f1f1;
+}
+
+input{
+  border-radius: 20px;
+  border: none;
+  padding: 12px;
+}
+
+#natija, #aiNatija{
+  margin-top: 20px;
+  font-size: 18px;
+  background: rgba(255,255,255,0.15);
+  padding: 15px;
+  border-radius: 15px;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Ziyo IT Academy</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+<h1>Ziyo IT Academy 🚀</h1>
+
+<p style="font-size:18px;">
+  👤 Foydalanuvchi: <b>Toshmatov Muhammad</b>
+</p>
+
+<button onclick="dars()">📘 Dars</button>
+<button onclick="test()">📝 Test</button>
+
+<p id="natija"></p>
+
+<hr>
+
+<h2>🤖 AI Yordamchi</h2>
+<input id="savol" placeholder="Savol yozing..."
+  style="padding:10px;width:80%;font-size:16px;">
+<br><br>
+<button onclick="aiJavob()">Savol ber</button>
+<p id="aiNatija"></p>
+
+<hr>
+
+<h2>📞 Aloqa</h2>
+
+<p style="font-size:18px;">
+  📱 Telefon:
+  <a href="tel:+998520895"
+     style="color:blue;text-decoration:none;">
+    +998 52 0895
+  </a>
+</p>
+
+<p style="font-size:18px;">
+  💬 Telegram:
+  <a href="https://t.me/O1ybe"
+     target="_blank"
+     style="color:blue;text-decoration:none;">
+    @O1ybe
+  </a>
+</p>
+
+<script>
+  const userName = "Toshmatov Muhammad";
+
+  function dars() {
+    document.getElementById("natija").innerText =
+      "HTML — web sahifa tuzilishini yaratish uchun ishlatiladi.";
+  }
+
+  const tests = [
+    { savol: "HTML nima uchun ishlatiladi?", variantlar: ["Web sahifa tuzish","O‘yin o‘ynash","Rasm chizish"], togri: 0 },
+    { savol: "CSS nima qiladi?", variantlar: ["Dizayn beradi","Server yaratadi","Ma’lumot saqlaydi"], togri: 0 },
+    { savol: "JavaScript nima uchun kerak?", variantlar: ["Interaktivlik","Matn yozish","Rasm chizish"], togri: 0 },
+    { savol: "HTML fayl kengaytmasi?", variantlar: [".html",".css",".js"], togri: 0 },
+    { savol: "CSS fayl kengaytmasi?", variantlar: [".html",".css",".exe"], togri: 1 },
+    { savol: "JS fayl kengaytmasi?", variantlar: [".txt",".exe",".js"], togri: 2 },
+    { savol: "Frontend nima?", variantlar: ["Foydalanuvchi ko‘radigan qism","Server","Baza"], togri: 0 },
+    { savol: "Backend nima?", variantlar: ["Dizayn","Server qismi","Rasm"], togri: 1 },
+    { savol: "IT nimani anglatadi?", variantlar: ["Internet tezligi","Axborot texnologiyalari","O‘yin"], togri: 1 },
+    { savol: "HTML qaysi turdagi til?", variantlar: ["Dasturlash","Belgilash","Grafik"], togri: 1 }
+  ];
+
+  let index = 0;
+  let ball = 0;
+
+  function test() {
+    index = 0;
+    ball = 0;
+    savolChiq();
+  }
+
+  function savolChiq() {
+    if (index >= tests.length) {
+      let foiz = Math.round((ball / tests.length) * 100);
+      document.getElementById("natija").innerHTML =
+        "<h3>🎉 Test yakunlandi</h3>" +
+        "<p>👤 " + userName + "</p>" +
+        "<p>✅ " + ball + " / " + tests.length + "</p>" +
+        "<p>📊 Natija: " + foiz + "%</p>";
+      return;
+    }
+
+    let t = tests[index];
+    let html = "<h3>" + (index + 1) + ". " + t.savol + "</h3>";
+
+    t.variantlar.forEach((v, i) => {
+      html += "<button onclick='javob(" + i + ")'>" + v + "</button><br><br>";
+    });
+
+    document.getElementById("natija").innerHTML = html;
+  }
+
+  function javob(t) {
+    if (t === tests[index].togri) ball++;
+    index++;
+    savolChiq();
+  }
+
+  function aiJavob() {
+    const savol = document.getElementById("savol").value.toLowerCase();
+    let javob = "Bu savol bo‘yicha hozircha ma’lumot yo‘q.";
+
+    if (savol.includes("html")) javob = "HTML — web sahifa tuzilishini yaratadi.";
+    else if (savol.includes("css")) javob = "CSS — dizaynni boshqaradi.";
+    else if (savol.includes("js")) javob = "JavaScript — interaktivlik beradi.";
+    else if (savol.includes("it")) javob = "IT — axborot texnologiyalari.";
+
+    document.getElementById("aiNatija").innerText = javob;
+  }
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script>
+
+</body>
+</html>
